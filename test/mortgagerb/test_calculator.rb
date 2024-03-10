@@ -1,9 +1,24 @@
 require "test_helper"
 
 class TestMortgagerbCalculator < Minitest::Test
+  ANNUAL_RATE = 5.5
+  YEARS = 30
+  PRINCIPAL = 1000000
+
   def test_periodic_interest_rate
-    annual_rate = 5.5
-    result = ::Mortgagerb::Calculator.periodic_interest_rate(annual_rate)
-    assert result == annual_rate / 12
+    result = ::Mortgagerb::Calculator.periodic_interest_rate(ANNUAL_RATE)
+    assert result == ANNUAL_RATE / 100 / 12
+  end
+
+  def test_total_number_of_payments
+    result = ::Mortgagerb::Calculator.total_number_of_payments(YEARS)
+    assert result == YEARS * 12
+  end
+
+  def test_periodic_amortization_payment
+    r = ::Mortgagerb::Calculator.periodic_interest_rate(ANNUAL_RATE)
+    n = ::Mortgagerb::Calculator.total_number_of_payments(YEARS)
+    a = ::Mortgagerb::Calculator.periodic_amortization_payment(PRINCIPAL, r, n)
+    assert a == 5677.89
   end
 end
