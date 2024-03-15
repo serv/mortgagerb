@@ -14,14 +14,21 @@ module Mortgagerb
 
     # A
     def self.periodic_amortization_payment(principal, rate, n)
-      rate_multiplier = self.rate_plus_one_power_to_n(rate, n)
+      rate_multiplier = rate_plus_one_power_to_n(rate, n)
       (principal * (rate * rate_multiplier) / (rate_multiplier - 1)).round(2)
     end
 
+    # P
+    def self.principal_from_amortization_payment(amortization_payment, rate, n)
+      rate_multiplier = rate_plus_one_power_to_n(rate, n)
+      amortization_payment * (1 - (1 / rate_multiplier)) / rate
+    end
+
     private
-      # (1 + r) ^ n
-      def self.rate_plus_one_power_to_n(rate, n)
-        (1 + rate) ** n
-      end
+
+    # (1 + r) ^ n
+    def self.rate_plus_one_power_to_n(rate, n)
+      (1 + rate)**n
+    end
   end
 end
