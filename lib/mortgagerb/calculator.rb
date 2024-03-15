@@ -21,7 +21,7 @@ module Mortgagerb
     # P
     def self.principal_from_amortization_payment(amortization_payment, rate, n)
       rate_multiplier = rate_plus_one_power_to_n(rate, n)
-      amortization_payment * (1 - (1 / rate_multiplier)) / rate
+      (amortization_payment * (1 - (1 / rate_multiplier)) / rate).round(2)
     end
 
     private
