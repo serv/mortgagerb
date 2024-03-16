@@ -11,11 +11,14 @@ class TestMortgagerbScenario < Minitest::Test
     amortization_payment = scenario.calculate
 
     assert amortization_payment == 5677.89
+    assert scenario.amortization_payment == 5677.89
   end
 
   def test_calculate_thirty_year_fixed_get_pricipal
     scenario = ::Mortgagerb::Scenario.new(5677.89, ANNUAL_RATE, :thirty_year_fixed_get_pricipal)
     principal = scenario.calculate
+
     assert principal.round == PRINCIPAL
+    assert scenario.principal == PRINCIPAL
   end
 end

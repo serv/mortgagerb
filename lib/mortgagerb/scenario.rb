@@ -1,5 +1,7 @@
 module Mortgagerb
   class Scenario
+    attr_accessor :amortization_payment, :principal
+
     def initialize(amount, rate, type)
       @amount = amount
       @rate = rate
