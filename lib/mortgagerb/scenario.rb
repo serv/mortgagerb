@@ -19,6 +19,22 @@ module Mortgagerb
         r = Calculator.periodic_interest_rate(@rate)
         n = Calculator.total_number_of_payments(30)
         @principal = Calculator.principal_from_amortization_payment(@amount, r, n)
+      elsif @type === :twenty_year_fixed
+        r = Calculator.periodic_interest_rate(@rate)
+        n = Calculator.total_number_of_payments(20)
+        @amortization_payment = Calculator.periodic_amortization_payment(@amount, r, n)
+      elsif @type === :twenty_year_fixed_get_principal
+        r = Calculator.periodic_interest_rate(@rate)
+        n = Calculator.total_number_of_payments(20)
+        @principal = Calculator.principal_from_amortization_payment(@amount, r, n)
+      elsif @type === :fifteen_year_fixed
+        r = Calculator.periodic_interest_rate(@rate)
+        n = Calculator.total_number_of_payments(15)
+        @amortization_payment = Calculator.periodic_amortization_payment(@amount, r, n)
+      elsif @type === :fifteen_year_fixed_get_principal
+        r = Calculator.periodic_interest_rate(@rate)
+        n = Calculator.total_number_of_payments(15)
+        @principal = Calculator.principal_from_amortization_payment(@amount, r, n)
       end
     end
   end
