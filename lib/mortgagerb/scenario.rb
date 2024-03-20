@@ -11,11 +11,12 @@ module Mortgagerb
     end
 
     def calculate
-      if @type == :thirty_year_fixed
+      if %i[thirty_year_fixed three_year_arm five_year_arm seven_year_arm ten_year_arm].include?(@type)
         r = Calculator.periodic_interest_rate(@rate)
         n = Calculator.total_number_of_payments(30)
         @amortization_payment = Calculator.periodic_amortization_payment(@amount, r, n)
-      elsif @type == :thirty_year_fixed_get_pricipal
+      elsif %i[thirty_year_fixed_get_pricipal three_year_arm_get_principal five_year_arm_get_principal
+               seven_year_arm_get_principal ten_year_arm_get_principal].include?(@type)
         r = Calculator.periodic_interest_rate(@rate)
         n = Calculator.total_number_of_payments(30)
         @principal = Calculator.principal_from_amortization_payment(@amount, r, n)
