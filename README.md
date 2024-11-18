@@ -30,6 +30,21 @@ scenario = Mortgagerb::Scenario.new(principal, rate, type)
 amortization_payment = scenario.calculate # 5677.89
 ```
 
+### Get the 30-Yr FRM and 15-Yr FRM from Freddie Mac
+
+The gem will scrape Freddie Mac's website in order to get the rates.
+Use this responsibly. Do not over-scrape the website. Cache the value locally.
+Check for new data seldomly.
+
+```ruby
+require 'mortgagerb'
+
+rates_now = Mortgagerb::FreddieMac.now
+frm30 = rates_now[:fmr30] # 7.77
+frm15 = rates_now[:frm15] # 6.66
+```
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.

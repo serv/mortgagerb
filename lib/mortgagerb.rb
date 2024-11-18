@@ -2,6 +2,7 @@
 
 require_relative "mortgagerb/version"
 require_relative "mortgagerb/calculator"
+require_relative "mortgagerb/freddie_mac"
 require_relative "mortgagerb/scenario"
 
 module Mortgagerb
