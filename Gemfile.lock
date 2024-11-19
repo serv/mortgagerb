@@ -1,7 +1,9 @@
 PATH
   remote: .
   specs:
-    mortgagerb (0.2.0)
+    mortgagerb (0.2.1)
+      faraday (~> 2.12, >= 2.12.1)
+      nokogiri (~> 1.16, >= 1.16.7)
 
 GEM
   remote: https://rubygems.org/
